@@ -22,6 +22,11 @@ class ABTest extends Component {
   	this.variationKey = optimizely.activate(props.name, userId);
   }
 
+  shouldComponentUpdate(nextProps) {
+    // AB component shouldn't ever be reloading multiple times, though maybe it's children might
+    return !_.isEqual(this.props, nextProps); 
+  }
+
   render() {
   	const { props } = this;
     if (!this.variationKey) {

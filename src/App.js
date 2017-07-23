@@ -4,44 +4,39 @@ import './App.css';
 
 import ABTest from './components/ABTest';
 
-const WithLogoVariation = (props) => {
-  return (
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
-      </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
-      <button onClick={props.telemetryEvents.clickedBuy()}>Buy!</button>
-    </div>
-  );
-};
 
-const NoLogoVariation = (props) => {
-  return (
-    <div className="App">
-      <div className="App-header">
-        <h2>Welcome to React</h2>
-      </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
-      <button onClick={props.telemetryEvents.clickedBuy()}>Buy!</button>
-    </div>
-  );
-};
-
-
+// This AB test App assumes that the optimizely.json contains a running experiment called
+// 'logoTest' with two variations called `withLogo`,  and `noLogo`.  The ABTest component
+// automatically hooks up to a running test 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+
+    this.clickBuy = this.clickBuy.bind(this);
+  }
+
+  clickBuy() {
+    window['optimizely'].push({
+      type: "event",
+      eventName: "visualClickBuy"
+    });
+  }
   render() {
-    // Variations corespond to variations in the Optimizely test
-    const variations = {
-      withLogo: <WithLogoVariation />,
-      noLogo: <NoLogoVariation />,
-    }
-    return <ABTest name="logoTest" variations={variations} />
+    return (
+      <div className="App">
+          <div className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h2>Welcome to React</h2>
+          </div>
+          <p className="App-intro">
+            To get started, edit <code>src/App.js</code> and save to reload.
+          </p>
+          <button onClick={this.clickBuy()}>Buy!</button>
+        <strong>{this.state.count}</strong>
+        <button onClick={ () => this.setState({count: this.state.count+1}) }>Increment</button>
+      </div>
+    );
 
   }
 }
