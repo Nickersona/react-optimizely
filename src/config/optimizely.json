@@ -1,0 +1,48 @@
+{
+  "accountId": "8514213157",
+  "attributes": [],
+  "audiences": [],
+  "events": [
+    {
+      "experimentIds": [
+        "8505973373"
+      ],
+      "id": "8503652772",
+      "key": "clickedBuy"
+    }
+  ],
+  "experiments": [
+    {
+      "audienceIds": [],
+      "forcedVariations": {},
+      "id": "8505973373",
+      "key": "logoTest",
+      "layerId": "8504543662",
+      "status": "Running",
+      "trafficAllocation": [
+        {
+          "endOfRange": 5000,
+          "entityId": "8516270394"
+        },
+        {
+          "endOfRange": 10000,
+          "entityId": "8508213850"
+        }
+      ],
+      "variations": [
+        {
+          "id": "8516270394",
+          "key": "withLogo"
+        },
+        {
+          "id": "8508213850",
+          "key": "noLogo"
+        }
+      ]
+    }
+  ],
+  "groups": [],
+  "projectId": "8514213157",
+  "revision": "9",
+  "version": "2"
+}
