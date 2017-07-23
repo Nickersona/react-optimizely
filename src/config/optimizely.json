@@ -39,10 +39,38 @@
           "key": "noLogo"
         }
       ]
+    },
+    {
+      "audienceIds": [],
+      "forcedVariations": {},
+      "id": "8510771166",
+      "key": null,
+      "layerId": "8506895232",
+      "status": "Not started",
+      "trafficAllocation": [
+        {
+          "endOfRange": 5000,
+          "entityId": "8503454115"
+        },
+        {
+          "endOfRange": 10000,
+          "entityId": "8509182334"
+        }
+      ],
+      "variations": [
+        {
+          "id": "8503454115",
+          "key": null
+        },
+        {
+          "id": "8509182334",
+          "key": null
+        }
+      ]
     }
   ],
   "groups": [],
   "projectId": "8514213157",
-  "revision": "9",
+  "revision": "12",
   "version": "2"
 }

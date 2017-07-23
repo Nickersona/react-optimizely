@@ -15,10 +15,6 @@ class ABTest extends Component {
     // store so that unmounting would still keep the userId
     const userId = _.random(0, 1000).toString();
 
-    this.events = {
-      clickedBuy: () => { optimizely.track('clickedBuy', userId); },
-    }
-
   	this.variationKey = optimizely.activate(props.name, userId);
   }
 
@@ -33,7 +29,7 @@ class ABTest extends Component {
     
     
     if (maybeComponent) {
-      return React.cloneElement(maybeComponent, { telemetryEvents: this.events });
+      return maybeComponent;
     } else {
       console.log(`No Variation '${this.variationKey}' found for ABTest ${props.name}, ABTest component wasn't passed a variant with the correct key`)  
       return null;

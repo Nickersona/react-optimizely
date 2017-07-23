@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import { events } from './helpers/optimizely';
 import ABTest from './components/ABTest';
 
 const WithLogoVariation = (props) => {
@@ -14,7 +14,7 @@ const WithLogoVariation = (props) => {
       <p className="App-intro">
         To get started, edit <code>src/App.js</code> and save to reload.
       </p>
-      <button onClick={props.telemetryEvents.clickedBuy()}>Buy!</button>
+      <button onClick={events.clickedBuy()}>Buy!</button>
     </div>
   );
 };
@@ -28,7 +28,7 @@ const NoLogoVariation = (props) => {
       <p className="App-intro">
         To get started, edit <code>src/App.js</code> and save to reload.
       </p>
-      <button onClick={props.telemetryEvents.clickedBuy()}>Buy!</button>
+      <button onClick={events.clickedBuy()}>Buy!</button>
     </div>
   );
 };
